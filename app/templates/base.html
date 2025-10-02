@@ -1,102 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
-  <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
 
-    body {
-        font-family: 'Playfair Display', serif;
-        background-color: #111;
-        color: #f5f5f5;
-    }
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #111;
+            color: #f5f5f5;
+        }
 
-    header {
-        background-color: #000;
-        color: #d4af37; /* dourado elegante */
-        text-align: center;
-        padding: 15px 0;
-        font-size: 22px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
+        header {
+            background-color: #000;
+            color: #d4af37;
+            /* dourado elegante */
+            text-align: center;
+            padding: 15px 0;
+            font-size: 22px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-    footer {
-        background-color: #000;
-        color: #aaa;
-        padding: 20px;
-        text-align: center;
-        font-size: 14px;
-        margin-top: auto; /* faz o footer grudar no final */
-    }
+        footer {
+            background-color: #000;
+            color: #aaa;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: auto;
+            /* faz o footer grudar no final */
+        }
 
-    nav {
-        background-color: #000;
-        color: #fff;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-bottom: 1px solid #333;
-    }
+        nav {
+            background-color: #000;
+            color: #fff;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
 
-    nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-    nav ul li {
-        margin: 0 15px;
-    }
+        nav ul li {
+            margin: 0 15px;
+        }
 
-    nav ul li a {
-        color: #f5f5f5;
-        text-decoration: none;
-        font-size: 16px;
-        padding: 10px 15px;
-        transition: all 0.3s ease;
-    }
+        nav ul li a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
 
-    nav ul li a:hover {
-        color: #d4af37;
-    }
+        nav ul li a:hover {
+            color: #d4af37;
+        }
 
-    nav ul li.active a {
-        color: #d4af37;
-        border-bottom: 2px solid #d4af37;
-    }
+        nav ul li.active a {
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
 
-    main {
-        flex: 1; /* ocupa todo espaço entre o header e o footer */
-    }
-  </style>
+        main {
+            flex: 1;
+            /* ocupa todo espaço entre o header e o footer */
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <h1>AutoLuxo Multimarcas</h1>
-    <nav>
-      <ul>
-        <li><a href="{% url 'car' %}">Carros</a></li>
-        <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-
-  <footer>
-    <p>&copy; 2025 AutoLuxo Multimarcas - Excelência Automotiva</p>
-  </footer>
+    <header>
+        <h1>AutoLuxo Multimarcas</h1>
+        <nav>
+            <ul>
+                {% if user.is_authenticated%}
+                <li>Olá, {{user.username}}</li>
+                <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+                {%endif%}
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'register' %}">Cadastre-se</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {%endif%}
+                <li><a href="{% url 'car' %}">Carros</a></li>
+                
+                {% if user.is_authenticated%}
+                <a href="{% url 'logout' %}">Sair</a></li>
+                {%endif%}
+            </ul>
+        </nav>
+    </header>
+    <main> {% block content %}{% endblock %} </main>
+    <footer>
+        <p>&copy; 2025 AutoLuxo Multimarcas - Excelência Automotiva</p>
+    </footer>
 </body>
+
 </html>
