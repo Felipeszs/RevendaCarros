@@ -233,13 +233,19 @@ nav ul li a:hover::after {
     margin: 0 auto;
 }
 
+/* style.css (substitua o código antigo dos cards por este) */
+
+.car-grid a.car-card {
+    text-decoration: none; /* Garante que o link não tenha sublinhado */
+    color: inherit; /* Herda a cor do texto padrão */
+}
+
 .car-card {
-    background-color: var(--cor-preto-card);
+    position: relative; /* Essencial para o overlay funcionar */
     border: 1px solid var(--cor-borda);
     border-radius: 12px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    display: block; /* Mudamos de flex para block */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -250,7 +256,7 @@ nav ul li a:hover::after {
 
 .car-card .car-image {
     width: 100%;
-    height: 220px;
+    height: 250px; /* Aumentei um pouco a altura da imagem para compensar */
     overflow: hidden;
 }
 
@@ -265,35 +271,40 @@ nav ul li a:hover::after {
     transform: scale(1.05);
 }
 
+/* style.css (substitua a regra .car-info pela abaixo) */
+
 .car-info {
-    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Reduzi o padding, principalmente no topo, para diminuir a altura */
+    padding: 25px 15px 12px 15px;
     text-align: left;
-    border-top: 1px solid var(--cor-borda);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0) 100%);
+    transition: background 0.3s ease;
 }
 
 .car-info h2 {
     font-family: var(--font-principal);
-    font-size: 24px;
+    font-size: 18px; /* Diminuí um pouco a fonte do título */
     color: var(--cor-branco-texto);
-    margin-bottom: 10px;
+    margin: 0 0 4px 0; /* Margens reduzidas */
 }
 
 .car-details {
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 13px; /* Fonte do 'Ano' bem pequena */
     color: var(--cor-cinza-texto);
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 
 .car-info .price {
-    font-size: 26px;
+    font-size: 20px; /* Preço um pouco menor */
     color: var(--cor-dourado);
     font-weight: bold;
-    margin-top: auto; /* Empurra o preço para baixo */
+    margin-top: auto;
     text-align: right;
 }
 

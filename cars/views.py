@@ -1,34 +1,46 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from cars.models import Car
 from cars.forms import CarModelForm
+from django.views import View
+from django.views.generic import ListView
 
 
-def cars_view(request):
-    search = request.GET.get('search')
-    
-    if search:
-        # busca por modelo ou por nome da marca
-        cars = Car.objects.filter(model__icontains=search).order_by('model') | Car.objects.filter(brand__name__icontains=search).order_by('model')
-    else:
-        # mostra todos os carros se não tiver busca
-        cars = Car.objects.all().order_by('model')
-        
-    return render(
+class CarsListView(ListView):
+    model = Car
+    template_name = 'cars.html'
+    context_object_name = 'cars'
+
+
+    def get_queryset(self):
+        cars = super().get_queryset().order_by('model')
+        search = self.request.GET.get('search')
+        if search:
+            cars = cars.filter(
+                Q(model__icontains=search) | 
+                Q(brand__name__icontains=search)
+            ).distinct()
+
+        return cars
+
+
+
+class NewCarView(View):
+
+    def get(self, request):
+        new_car_form = CarModelForm
+        return render(
         request,
-        'Cars.html',
-        {'cars': cars}
+        'new_car.html',
+        {'new_car_form' : new_car_form}
     )
 
-
-def new_car_view(request):
-    if request.method == 'POST':
+    def post(self, request):
         new_car_form = CarModelForm(request.POST, request.FILES)
         if new_car_form.is_valid():
             new_car_form.save()
             return redirect('car')
-    else:
-        new_car_form = CarModelForm()
-    return render(
+        return render(
         request,
         'new_car.html',
         {'new_car_form' : new_car_form}
