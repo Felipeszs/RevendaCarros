@@ -28,5 +28,8 @@ urlpatterns = [
     path('register/', register_view, name='register'),
     path('logout/', logout_view, name='logout'),
     path('new_car', new_car_view, name='new_car'),
-    path('login', login_view, name='login')
+    path('login', login_view, name='login'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
