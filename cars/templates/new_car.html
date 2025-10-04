@@ -7,7 +7,7 @@
     <h2>Cadastrar Novo Carro</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% for field in new_car_form %}
+        {% for field in form %}
             <div class="form-group">
                 {{ field.errors }}
                 <label for="{{ field.id_for_label }}">{{ field.label }}:</label>

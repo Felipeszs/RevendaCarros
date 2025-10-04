@@ -13,14 +13,14 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <a href="{% url 'car' %}">
+                <a href="{% url 'cars' %}">
                     <img src="{% static 'images/image.png' %}" alt="Logo da AutoLuxo">
                     <h1>AutoLuxo</h1>
                 </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="{% url 'car' %}">Carros</a></li>
+                    <li><a href="{% url 'cars' %}">Carros</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
                     <li><a href="{% url 'logout' %}">Sair ({{ user.username }})</a></li>

@@ -120,9 +120,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# ✅ CORREÇÃO: Aponte para uma pasta 'static' na raiz do projeto.
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static')
+    BASE_DIR / 'static',
 ]
+
+# ✅ ADIÇÃO: Diretório onde o `collectstatic` vai juntar os arquivos para produção.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

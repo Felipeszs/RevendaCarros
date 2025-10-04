@@ -37,6 +37,11 @@ main {
     padding: 40px 20px;
 }
 
+a {
+    color: var(--cor-dourado);
+    text-decoration: none;
+}
+
 /* ---- HEADER & NAVEGAÇÃO ---- */
 header {
     background-color: #000;
@@ -53,15 +58,15 @@ header {
 }
 
 .logo a {
-    display: flex; /* A mágica acontece aqui! */
-    align-items: center; /* Alinha o logo e o texto verticalmente */
-    gap: 15px; /* Cria um espaço entre o logo e o texto */
-    text-decoration: none; /* Garante que não haja sublinhado */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
 }
 
 .logo img {
-    height: 45px; /* Ajuste a altura do seu logo conforme necessário */
-    width: auto;  /* Mantém a proporção da imagem */
+    height: 45px;
+    width: auto;
 }
 
 .logo h1 {
@@ -70,7 +75,7 @@ header {
     font-size: 28px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin: 0; /* Remove qualquer margem padrão do h1 */
+    margin: 0;
 }
 
 
@@ -78,7 +83,7 @@ nav ul {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 25px; /* Espaçamento moderno */
+    gap: 25px;
 }
 
 nav ul li a {
@@ -90,7 +95,7 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a::after { /* Efeito de sublinhado no hover */
+nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -196,7 +201,6 @@ nav ul li a:hover::after {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    gap: 10px;
 }
 
 .search-container input {
@@ -227,26 +231,28 @@ nav ul li a:hover::after {
 
 .car-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Responsivo por padrão */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* style.css (substitua o código antigo dos cards por este) */
-
-.car-grid a.car-card {
-    text-decoration: none; /* Garante que o link não tenha sublinhado */
-    color: inherit; /* Herda a cor do texto padrão */
+/* ✅ ESTILO PARA O LINK QUE ENVOLVE O CARD */
+.car-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .car-card {
-    position: relative; /* Essencial para o overlay funcionar */
+    background-color: var(--cor-preto-card);
     border: 1px solid var(--cor-borda);
     border-radius: 12px;
     overflow: hidden;
-    display: block; /* Mudamos de flex para block */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .car-card:hover {
@@ -256,7 +262,7 @@ nav ul li a:hover::after {
 
 .car-card .car-image {
     width: 100%;
-    height: 250px; /* Aumentei um pouco a altura da imagem para compensar */
+    height: 220px;
     overflow: hidden;
 }
 
@@ -271,48 +277,158 @@ nav ul li a:hover::after {
     transform: scale(1.05);
 }
 
-/* style.css (substitua a regra .car-info pela abaixo) */
-
 .car-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    /* Reduzi o padding, principalmente no topo, para diminuir a altura */
-    padding: 25px 15px 12px 15px;
-    text-align: left;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0) 100%);
-    transition: background 0.3s ease;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .car-info h2 {
     font-family: var(--font-principal);
-    font-size: 18px; /* Diminuí um pouco a fonte do título */
+    font-size: 22px;
     color: var(--cor-branco-texto);
-    margin: 0 0 4px 0; /* Margens reduzidas */
+    margin-bottom: 10px;
 }
 
 .car-details {
+    margin-top: auto; /* Empurra para o fundo */
     display: flex;
     justify-content: space-between;
-    font-size: 13px; /* Fonte do 'Ano' bem pequena */
+    align-items: center;
+    font-size: 14px;
     color: var(--cor-cinza-texto);
-    margin-bottom: 8px;
 }
 
 .car-info .price {
-    font-size: 20px; /* Preço um pouco menor */
+    font-size: 22px;
     color: var(--cor-dourado);
     font-weight: bold;
-    margin-top: auto;
-    text-align: right;
 }
 
 .no-results {
     color: var(--cor-cinza-texto);
     font-size: 18px;
     text-align: center;
-    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    grid-column: 1 / -1;
+}
+
+/* ---- PÁGINA DE DETALHES DO CARRO ---- */
+.detail-container {
+    display: flex;
+    flex-wrap: wrap; /* Para telas menores */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: var(--cor-preto-card);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--cor-borda);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.detail-image {
+    flex: 1.2;
+    min-width: 300px;
+}
+
+.detail-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* ✅ CORREÇÃO: O nome da classe agora é .detail-info para bater com o HTML */
+.detail-info {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-info h1 {
+    font-family: var(--font-principal);
+    font-size: 36px;
+    color: var(--cor-dourado);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.spec-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.spec-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    font-size: 18px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.spec-list li:first-child {
+    border-top: 1px solid var(--cor-borda);
+}
+
+.spec-list span {
+    color: var(--cor-cinza-texto);
+}
+
+.spec-list strong {
+    color: var(--cor-branco-texto);
+    font-weight: 500;
+}
+
+.detail-price {
+    font-size: 42px;
+    font-family: var(--font-principal);
+    color: var(--cor-dourado);
+    text-align: right;
+    margin-top: auto; /* Empurra para baixo */
+    margin-bottom: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex-grow: 1;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--cor-dourado);
+    color: #000;
+    border: 1px solid var(--cor-dourado);
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-dourado-hover);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: #ff5555;
+    border: 1px solid #ff5555;
+}
+
+.btn-danger:hover {
+    background-color: #ff5555;
+    color: var(--cor-branco-texto);
 }
 
 
@@ -323,6 +439,5 @@ footer {
     padding: 25px;
     text-align: center;
     font-size: 14px;
-    margin-top: auto;
     border-top: 1px solid var(--cor-borda);
 }
