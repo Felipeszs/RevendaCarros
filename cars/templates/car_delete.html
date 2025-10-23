@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    /*
+      Definição das variáveis de cor do seu site.
+      Colocadas aqui para que este componente seja independente.
+    */
+    .form-container {
+        --cor-preto-card: #1a1a1a;
+        --cor-dourado: #d4af37;
+        --cor-branco-texto: #f5f5f5;
+        --cor-cinza-texto: #bbb;
+        --cor-borda: #333;
+        --font-principal: 'Playfair Display', serif;
+    }
+
+    /* Estilo para o título H1 do formulário */
+    .form-container h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-family: var(--font-principal);
+        font-size: 28px;
+        color: var(--cor-dourado);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    /* Estilo para o parágrafo de confirmação */
+    .form-container p {
+        color: var(--cor-cinza-texto);
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    /* Destaque para o nome do carro no texto de confirmação */
+    .form-container p strong {
+        color: var(--cor-branco-texto);
+        font-weight: 500;
+    }
+
+    /* Container dos botões de ação */
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        justify-content: center; /* Centraliza os botões */
+    }
+
+    /* Estilo base para os botões */
+    .btn {
+        flex-grow: 1;
+        padding: 14px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid transparent;
+        max-width: 200px; /* Limita a largura dos botões */
+    }
+
+    /* Botão de perigo (Deletar) */
+    .btn-danger {
+        background-color: transparent;
+        color: #ff5555;
+        border: 1px solid #ff5555;
+    }
+
+    .btn-danger:hover {
+        background-color: #ff5555;
+        color: var(--cor-branco-texto);
+        transform: translateY(-2px);
+    }
+
+    /* Botão secundário (Cancelar) */
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--cor-cinza-texto);
+        border: 1px solid var(--cor-borda);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--cor-borda);
+        color: var(--cor-branco-texto);
+        transform: translateY(-2px);
+    }
+
+</style>
+
+<div class="form-container text-center">
+    <h1>Deletar Carro</h1>
+    
+    <p>Tem certeza que deseja deletar o carro <strong>{{ object.brand }} {{ object.model }}</strong>? Esta ação não pode ser desfeita.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="action-buttons">
+            <button type="submit" class="btn btn-danger">Deletar Carro</button>
+            <a href="{% url 'car_detail' pk=object.pk %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

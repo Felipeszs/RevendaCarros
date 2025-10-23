@@ -1,6 +1,159 @@
 /* ---- GOOGLE FONTS & VARIÁVEIS GLOBAIS ---- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
 
+    /* ---- FONTES E VARIÁVEIS DE COR ---- */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
+
+    :root {
+        --cor-preto-fundo: #111111;
+        --cor-preto-card: #1a1a1a;
+        --cor-dourado: #d4af37;
+        --cor-dourado-hover: #b38e2e;
+        --cor-branco-texto: #f5f5f5;
+        --cor-cinza-texto: #bbb;
+        --cor-borda: #333;
+        --font-principal: 'Playfair Display', serif;
+        --font-secundaria: 'Roboto', sans-serif;
+    }
+
+    .back-link {
+        display: block;
+        max-width: 1200px;
+        margin: 20px auto 0;
+        /* Alinha com o container abaixo */
+        padding: 0 40px;
+        /* Alinha o texto com o padding do container */
+        color: var(--cor-cinza-texto);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+        color: var(--cor-dourado);
+    }
+
+    .detail-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* Para telas menores */
+        gap: 40px;
+        max-width: 1200px;
+        margin: 40px auto;
+        background-color: var(--cor-preto-card);
+        padding: 40px;
+        border-radius: 12px;
+        border: 1px solid var(--cor-borda);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        font-family: var(--font-secundaria);
+    }
+
+    .detail-image {
+        flex: 1.2;
+        min-width: 300px;
+    }
+
+    .detail-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .detail-info {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        color: var(--cor-branco-texto);
+    }
+
+    .detail-info h1 {
+        font-family: var(--font-principal);
+        font-size: 36px;
+        color: var(--cor-dourado);
+        margin-bottom: 25px;
+        line-height: 1.2;
+    }
+
+    .spec-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 25px;
+    }
+
+    .spec-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        font-size: 18px;
+        border-bottom: 1px solid var(--cor-borda);
+    }
+
+    .spec-list li:first-child {
+        border-top: 1px solid var(--cor-borda);
+    }
+
+    .spec-list span {
+        color: var(--cor-cinza-texto);
+    }
+
+    .spec-list strong {
+        color: var(--cor-branco-texto);
+        font-weight: 500;
+    }
+
+    .detail-price {
+        font-size: 42px;
+        font-family: var(--font-principal);
+        color: var(--cor-dourado);
+        text-align: right;
+        margin-top: auto;
+        /* Empurra para baixo */
+        margin-bottom: 30px;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn {
+        flex-grow: 1;
+        padding: 14px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: var(--cor-dourado);
+        color: #000;
+        border: 1px solid var(--cor-dourado);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--cor-dourado-hover);
+        transform: translateY(-2px);
+    }
+
+    .btn-danger {
+        background-color: transparent;
+        color: #ff5555;
+        border: 1px solid #ff5555;
+    }
+
+    .btn-danger:hover {
+        background-color: #ff5555;
+        color: var(--cor-branco-texto);
+    }
+
 :root {
     --cor-preto-fundo: #111111;
     --cor-preto-card: #1a1a1a;
@@ -432,7 +585,6 @@ nav ul li a:hover::after {
 }
 
 
-/* ---- FOOTER ---- */
 footer {
     background-color: #000;
     color: #888;

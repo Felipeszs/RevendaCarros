@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    /*
+      Definição das variáveis de cor do seu site.
+      Colocadas aqui para que este componente seja independente.
+    */
+    .form-container {
+        --cor-preto-card: #1a1a1a;
+        --cor-dourado: #d4af37;
+        --cor-dourado-hover: #b38e2e;
+        --cor-branco-texto: #f5f5f5;
+        --cor-cinza-texto: #bbb;
+        --cor-borda: #333;
+        --font-principal: 'Playfair Display', serif;
+        --font-secundaria: 'Roboto', sans-serif;
+    }
+    
+    /* Estilo para o título H1 do formulário */
+    .form-container h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-family: var(--font-principal);
+        font-size: 28px;
+        color: var(--cor-dourado);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    /* Estilização da tabela gerada pelo {{ form.as_table }} */
+    .form-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 25px;
+    }
+
+    /* Estilo para os labels (th) do formulário: "Marca:", "Modelo:", etc. */
+    .form-container th {
+        text-align: left;
+        padding: 12px 15px 12px 0;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--cor-cinza-texto);
+        vertical-align: top;
+    }
+
+    /* Célula que contém o campo de input */
+    .form-container td {
+        padding-bottom: 15px;
+    }
+
+    /* Estilo dos campos de formulário (input, select, etc.) */
+    .form-container td input,
+    .form-container td select,
+    .form-container td textarea {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        font-family: var(--font-secundaria);
+        border: 1px solid var(--cor-borda);
+        border-radius: 6px;
+        background-color: #000;
+        color: var(--cor-branco-texto);
+        transition: border-color 0.3s ease;
+    }
+
+    .form-container td input:focus,
+    .form-container td select:focus,
+    .form-container td textarea:focus {
+        border-color: var(--cor-dourado);
+        outline: none;
+    }
+
+    /* Mensagens de erro de validação do Django */
+    .form-container td .errorlist {
+        color: #ff5555;
+        font-size: 14px;
+        list-style: none;
+        padding: 5px 0 0 0;
+        margin: 0;
+    }
+
+    /* Container dos botões de ação */
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    /* Estilo base para os botões */
+    .btn {
+        flex-grow: 1;
+        padding: 14px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid transparent;
+    }
+
+    /* Botão primário (Salvar) */
+    .btn-primary {
+        background-color: var(--cor-dourado);
+        color: #000;
+        border-color: var(--cor-dourado);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--cor-dourado-hover);
+        transform: translateY(-2px);
+    }
+
+    /* Botão secundário (Cancelar) */
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--cor-cinza-texto);
+        border-color: var(--cor-borda);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--cor-borda);
+        color: var(--cor-branco-texto);
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Editar Carro</h1>
+        
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        <div class="action-buttons">
+            <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+            <a href="{% url 'cars' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
