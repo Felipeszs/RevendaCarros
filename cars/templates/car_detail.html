@@ -29,6 +29,12 @@
                 <span>Valor</span>
                 <strong>R$ {{ object.value|intcomma }}</strong>
             </li>
+            {% if object.bio %}
+                <li class="bio-item">
+                    <span>Bio</span>
+                    <strong>{{ object.bio }}</strong>
+                </li>
+            {% endif %}
         </ul>
 
         <p class="detail-price">R$ {{ object.value|intcomma }}</p>
