@@ -3,10 +3,7 @@
 {% block content %}
 
 <style>
-    /*
-      Definição das variáveis de cor do seu site.
-      Colocadas aqui para que este componente seja independente.
-    */
+    
     .form-container {
         --cor-preto-card: #1a1a1a;
         --cor-dourado: #d4af37;
@@ -18,7 +15,7 @@
         --font-secundaria: 'Roboto', sans-serif;
     }
     
-    /* Estilo para o título H1 do formulário */
+    
     .form-container h1 {
         text-align: center;
         margin-bottom: 30px;
@@ -29,14 +26,14 @@
         letter-spacing: 1.5px;
     }
 
-    /* Estilização da tabela gerada pelo {{ form.as_table }} */
+    
     .form-container table {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 25px;
     }
 
-    /* Estilo para os labels (th) do formulário: "Marca:", "Modelo:", etc. */
+    
     .form-container th {
         text-align: left;
         padding: 12px 15px 12px 0;
@@ -46,12 +43,12 @@
         vertical-align: top;
     }
 
-    /* Célula que contém o campo de input */
+    
     .form-container td {
         padding-bottom: 15px;
     }
 
-    /* Estilo dos campos de formulário (input, select, etc.) */
+    
     .form-container td input,
     .form-container td select,
     .form-container td textarea {
@@ -73,7 +70,7 @@
         outline: none;
     }
 
-    /* Mensagens de erro de validação do Django */
+    
     .form-container td .errorlist {
         color: #ff5555;
         font-size: 14px;
@@ -82,14 +79,14 @@
         margin: 0;
     }
 
-    /* Container dos botões de ação */
+   
     .action-buttons {
         display: flex;
         gap: 15px;
         margin-top: 10px;
     }
 
-    /* Estilo base para os botões */
+   
     .btn {
         flex-grow: 1;
         padding: 14px 20px;
@@ -104,7 +101,7 @@
         border: 1px solid transparent;
     }
 
-    /* Botão primário (Salvar) */
+    
     .btn-primary {
         background-color: var(--cor-dourado);
         color: #000;
@@ -116,7 +113,7 @@
         transform: translateY(-2px);
     }
 
-    /* Botão secundário (Cancelar) */
+
     .btn-secondary {
         background-color: transparent;
         color: var(--cor-cinza-texto);

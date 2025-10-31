@@ -20,9 +20,7 @@
         display: block;
         max-width: 1200px;
         margin: 20px auto 0;
-        /* Alinha com o container abaixo */
         padding: 0 40px;
-        /* Alinha o texto com o padding do container */
         color: var(--cor-cinza-texto);
         text-decoration: none;
         font-weight: 500;
@@ -36,7 +34,6 @@
     .detail-container {
         display: flex;
         flex-wrap: wrap;
-        /* Para telas menores */
         gap: 40px;
         max-width: 1200px;
         margin: 40px auto;
@@ -267,7 +264,7 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
-/* ---- FORMULÁRIOS (PADRÃO PARA LOGIN, REGISTER, NEW CAR) ---- */
+
 .form-container {
     max-width: 500px;
     margin: 50px auto;
@@ -349,7 +346,7 @@ nav ul li a:hover::after {
     background-color: var(--cor-dourado-hover);
 }
 
-/* ---- LISTA DE CARROS (CARDS) ---- */
+
 .search-container {
     display: flex;
     justify-content: center;
@@ -390,7 +387,7 @@ nav ul li a:hover::after {
     margin: 0 auto;
 }
 
-/* ✅ ESTILO PARA O LINK QUE ENVOLVE O CARD */
+
 .car-card-link {
     text-decoration: none;
     color: inherit;
@@ -445,7 +442,7 @@ nav ul li a:hover::after {
 }
 
 .car-details {
-    margin-top: auto; /* Empurra para o fundo */
+    margin-top: auto; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -469,7 +466,7 @@ nav ul li a:hover::after {
 /* ---- PÁGINA DE DETALHES DO CARRO ---- */
 .detail-container {
     display: flex;
-    flex-wrap: wrap; /* Para telas menores */
+    flex-wrap: wrap; 
     gap: 40px;
     max-width: 1200px;
     margin: 50px auto;
@@ -492,7 +489,7 @@ nav ul li a:hover::after {
     object-fit: cover;
 }
 
-/* ✅ CORREÇÃO: O nome da classe agora é .detail-info para bater com o HTML */
+
 .detail-info {
     flex: 1;
     min-width: 300px;
@@ -528,22 +525,22 @@ nav ul li a:hover::after {
 
 .spec-list span {
     color: var(--cor-cinza-texto);
-    padding-right: 20px; /* ADICIONADO: Dá um espaço para o texto não colar */
-    flex-shrink: 0;      /* ADICIONADO: Impede que o "Bio" seja espremido */
+    padding-right: 20px; 
+    flex-shrink: 0;     
 }
 
 .spec-list strong {
     color: var(--cor-branco-texto);
     font-weight: 500;
-    text-align: justify;     /* ADICIONADO: Alinha o texto (curto ou longo) à direita */
-    word-break: break-word;  /* ADICIONADO: Quebra o texto de forma segura */
+    text-align: justify;   
+    word-break: break-word;  
 }
 .detail-price {
     font-size: 42px;
     font-family: var(--font-principal);
     color: var(--cor-dourado);
     text-align: right;
-    margin-top: auto; /* Empurra para baixo */
+    margin-top: auto; 
     margin-bottom: 30px;
 }
 
